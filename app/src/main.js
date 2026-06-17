@@ -2,15 +2,6 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
-// Zonas de ejemplo de una finca (ver guia-planos-finca.md en la raíz del repo).
-// Reemplazar por la geometría real del plano cuando esté disponible.
-const ZONES = [
-  { name: 'Vivienda', size: [12, 6, 10], position: [-20, 3, 15], color: 0xd9a441 },
-  { name: 'Establo', size: [16, 5, 8], position: [10, 2.5, 25], color: 0x8d6e63 },
-  { name: 'Bodega', size: [10, 4, 8], position: [-25, 2, -10], color: 0x607d8b },
-  { name: 'Cultivo', size: [30, 0.2, 20], position: [20, 0.1, -15], color: 0x9ccc65 },
-]
-
 const viewport = document.querySelector('#viewport')
 const btn2d = document.querySelector('#btn-2d')
 const btn3d = document.querySelector('#btn-3d')
@@ -23,24 +14,13 @@ const sun = new THREE.DirectionalLight(0xffffff, 1.2)
 sun.position.set(40, 60, 20)
 scene.add(sun)
 
-const ground = new THREE.Mesh(
-  new THREE.PlaneGeometry(120, 120),
-  new THREE.MeshStandardMaterial({ color: 0x2e3b22 }),
+// Cuadrado plano sobre el plano XZ, visible como plano de planta desde la cámara 2D.
+const square = new THREE.Mesh(
+  new THREE.PlaneGeometry(40, 40),
+  new THREE.MeshStandardMaterial({ color: 0x9ccc65, side: THREE.DoubleSide }),
 )
-ground.rotation.x = -Math.PI / 2
-scene.add(ground)
-
-scene.add(new THREE.GridHelper(120, 24, 0x4a5a3a, 0x3a4730))
-
-for (const zone of ZONES) {
-  const mesh = new THREE.Mesh(
-    new THREE.BoxGeometry(...zone.size),
-    new THREE.MeshStandardMaterial({ color: zone.color }),
-  )
-  mesh.position.set(...zone.position)
-  mesh.name = zone.name
-  scene.add(mesh)
-}
+square.rotation.x = -Math.PI / 2
+scene.add(square)
 
 const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setPixelRatio(window.devicePixelRatio)
