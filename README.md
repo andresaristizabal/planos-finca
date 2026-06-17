@@ -13,3 +13,9 @@ npm install
 npm run dev      # servidor de desarrollo en http://localhost:5173
 npm run build    # build de producción en app/dist
 ```
+
+### Publicación en GitHub Pages
+
+El workflow [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml) construye `app/` y lo publica en GitHub Pages automáticamente en cada push a `main` que toque la carpeta `app/` (también se puede disparar a mano desde la pestaña *Actions*).
+
+**Paso manual único (requiere permisos de administración del repo):** en GitHub, ir a *Settings → Pages → Build and deployment → Source* y seleccionar **GitHub Actions**. Una vez configurado, el sitio queda disponible en `https://<usuario>.github.io/planos-finca/`.
