@@ -1,0 +1,2 @@
+# planos-finca
+claude planos
