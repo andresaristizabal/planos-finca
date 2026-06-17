@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/finca.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planos Finca · Visor 2D/3D</title>
+  </head>
+  <body>
+    <div id="app">
+      <header id="toolbar">
+        <h1>Planos Finca</h1>
+        <div class="view-toggle">
+          <button id="btn-2d" class="active" type="button">Vista 2D (Planta)</button>
+          <button id="btn-3d" type="button">Vista 3D</button>
+        </div>
+      </header>
+      <main id="viewport"></main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
